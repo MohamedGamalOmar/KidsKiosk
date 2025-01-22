@@ -70,6 +70,7 @@ export const renderField = ({
             render={({ field }) => (
               <TinyEditor
                 value={field.value}
+                initialValue={field.value}
                 onEditorChange={field.onChange}
                 editorRef={editorRef || { current: null }}
               />
