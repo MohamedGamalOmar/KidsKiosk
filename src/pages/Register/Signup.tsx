@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { AxiosError } from "axios";
 import { IAxiosError } from "@/interfaces";
 import { useToast } from "@/hooks/use-toast";
+import InputGroup from "@/components/InputGroup";
 
 function Signup() {
   const navigate = useNavigate();
@@ -18,10 +19,13 @@ function Signup() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: yupResolver(registerSchema),
   });
+
+  const image = watch("image");
 
   const onSubmit: SubmitHandler<RegisterFormData> = async (formObj) => {
     const formData = new FormData();
@@ -55,7 +59,7 @@ function Signup() {
       if ([200, 201].includes(status)) {
         navigate("/verificationWithOtp", {
           replace: true,
-          state: { email: formObj.email, time: 2 * 60 * 1000 },
+          state: { email: formObj.email, time: 3 * 60 * 1000 },
         });
         toast({
           title: "Account created successfully, please verify your email",
@@ -73,20 +77,30 @@ function Signup() {
   };
 
   const renderSignupForm = REGISTER_FORM.map(({ name, placeholder, type }) => (
-    <div
+    <InputGroup
       key={name}
       className={`${
-        ["firstName", "secondName"].includes(name) ? "w-[48%]" : "w-full"
+        ["firstName", "secondName"].includes(name)
+          ? "w-[48%] mb-[5px]"
+          : "w-full mb-[5px]"
       } `}
+      {...(type === "file" && {
+        image: image instanceof FileList ? image[0] : undefined,
+      })}
     >
+      <label htmlFor={name}>{placeholder}</label>
       <Input
         type={type}
-        key={name}
+        id={name}
         placeholder={placeholder}
+        className="border !p-2 rounded w-full"
         {...register(name)}
+        {...(type === "file" && {
+          accept: "image/*",
+        })}
       />
       <ErrorMessage message={errors[name]?.message} />
-    </div>
+    </InputGroup>
   ));
 
   return (

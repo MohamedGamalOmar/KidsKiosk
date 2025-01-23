@@ -24,12 +24,7 @@ const darkModeSettings = {
   `,
 };
 
-function TinyEditor({
-  editorRef,
-  initialValue = "",
-  value,
-  onEditorChange,
-}: IProps) {
+function TinyEditor({ editorRef, value, onEditorChange }: IProps) {
   const { theme } = useTheme();
 
   const onInit = (_evt: any, editor: TinyMCEEditor) => {
@@ -38,11 +33,9 @@ function TinyEditor({
 
   return (
     <>
-      {/* {!isLoaded && <Loader />} */}
       <Editor
         apiKey={import.meta.env.VITE_TINY_API_KEY}
         onInit={onInit}
-        initialValue={initialValue}
         value={value}
         onEditorChange={(value) => {
           if (onEditorChange) onEditorChange(value);

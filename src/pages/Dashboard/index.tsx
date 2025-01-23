@@ -137,7 +137,9 @@ const Dashboard = () => {
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Revenue</p>
-              <h3 className="text-2xl font-bold">{totalRevenue}</h3>
+              <h3 className="text-2xl font-bold">
+                {Number(totalRevenue).toLocaleString()}
+              </h3>
             </div>
           </div>
         </Card>
@@ -248,7 +250,7 @@ const Dashboard = () => {
           data-aos-offset="50"
         >
           <h3 className="text-lg font-semibold mb-4">Recent Orders</h3>
-          <Table className="!min-w-[1030px]" headers={headers}>
+          <Table className="!min-w-[1050px]" headers={headers}>
             {renderRecentOrders}
           </Table>
         </Card>

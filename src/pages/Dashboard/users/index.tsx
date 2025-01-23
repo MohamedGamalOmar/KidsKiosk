@@ -48,7 +48,7 @@ function Users() {
         <td>{user.email}</td>
         <td>{user.phone || "-"}</td>
         <td>{user.address || "-"}</td>
-        <td>{format(user.createdAt, "dd MMM yyyy")}</td>
+        <td>{format(user.createdAt, "dd MMM yyyy - hh:mm a")}</td>
       </tr>
     ));
 
@@ -76,7 +76,9 @@ function Users() {
 
         {!isFetching ? (
           <>
-            <Table headers={tableHeaders}>{renderCategories}</Table>
+            <Table headers={tableHeaders} className="!min-w-[950px]">
+              {renderCategories}
+            </Table>
             <Pagination
               pageIndex={pageIndex}
               setPageIndex={setPageIndex}

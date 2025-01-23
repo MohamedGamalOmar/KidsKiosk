@@ -64,7 +64,7 @@ export const REGISTER_FORM: IRegisterInput[] = [
   },
   {
     name: "confirmedPassword",
-    placeholder: "confirm Password",
+    placeholder: "Confirm Password",
     type: "password",
     validation: {
       required: "confirm password is required",

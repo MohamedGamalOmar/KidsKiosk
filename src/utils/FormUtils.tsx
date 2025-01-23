@@ -70,7 +70,6 @@ export const renderField = ({
             render={({ field }) => (
               <TinyEditor
                 value={field.value}
-                initialValue={field.value}
                 onEditorChange={field.onChange}
                 editorRef={editorRef || { current: null }}
               />
@@ -94,6 +93,9 @@ export const renderField = ({
             placeholder={field.placeholder}
             className="border p-2 rounded w-full"
             {...register(field.name as keyof ProductForm)}
+            {...(field.type === "file" && {
+              accept: "image/*",
+            })}
           />
         </InputGroup>
       );

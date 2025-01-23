@@ -114,7 +114,6 @@ function AddImages() {
           size={"lg"}
           rounded={"md"}
           className="mt-10 text-base font-bold"
-          data-aos="fade-up"
           disabled={disabled}
           onClick={addProductImages}
         >
