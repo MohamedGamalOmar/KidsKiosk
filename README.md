@@ -68,7 +68,7 @@ KidsKiosk is a high-performance, responsive web application built with **React.j
     ```env
     VITE_GOOGLE_CLIENT_ID=your_google_id
     VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_key
-    VITE_API_BASE_URL=your_backend_api_url
+    VITE_TINY_API_KEY=your_tinymce_key
     ```
 
 4.  **Run Development Server:**
